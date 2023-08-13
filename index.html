@@ -15,25 +15,64 @@
         <style>
             body {
                 background-image: url("https://wallpapertag.com/wallpaper/full/8/4/c/815583-top-water-droplets-background-2560x1600.jpg");
+                font-family: "Trebuchet MS", "Lucida Sans Unicode",
+                    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+                margin-bottom: 50px;
+            }
+
+            .container {
+                margin-top: 50px;
             }
 
             .modal-header {
-                color: white;
-                background-color: rgba(0, 0, 0, 0.2);
+                background-color: #aac1ff;
+                color: #fff;
+                padding: 20px;
                 text-align: center;
-                border-radius: 10px 10px 10px 10px;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
             }
 
             .modal-header h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
                 font-weight: bold;
             }
 
+            .modal-header h6 {
+                font-size: 12px;
+                font-weight: bold;
+                color: #888;
+                margin-bottom: 0;
+            }
+
             .modal-body {
-                margin-top: 50px;
+                background-color: #fff;
                 padding: 30px;
-                background-color: white;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .modal-body h2 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .form-control {
+                border-radius: 0;
+            }
+
+            .form-control:focus {
+                box-shadow: none;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .input-group-text {
+                background-color: #f2f2f2;
+            }
+
+            .form-check-label {
+                font-weight: normal;
             }
         </style>
 
@@ -52,14 +91,13 @@
 
                         <div class="modal-body">
                             <h2 class="text-center">PRIJAVA</h2>
-                            <br />
 
                             <div class="form-group">
                                 <input
                                     type="text"
                                     class="form-control p-2"
                                     name="user"
-                                    placeholder="Ime..."
+                                    placeholder="Korisnicko ime..."
                                     id="username"
                                 />
                                 <br />
@@ -80,16 +118,118 @@
                                                 type="checkbox"
                                                 onclick="sakrij('pass')"
                                                 class="form-check-input"
-                                                id="showPassword"
+                                                id="showPassword1"
                                             />
                                             <label
                                                 class="form-check-label p-2"
-                                                for="showPassword"
+                                                for="showPassword1"
                                             >
                                                 Prikazi skriveno
                                             </label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <button
+                                    type="button"
+                                    id="login"
+                                    onclick="Login()"
+                                    class="btn btn-success btn-block p-3"
+                                >
+                                    <h4>Prijavi se</h4>
+                                </button>
+                            </div>
+
+                            <hr />
+
+                            <h2 class="text-center">
+                                Nemas nalog? Registruj se:
+                            </h2>
+
+                            <div id="registracija">
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control p-2"
+                                        placeholder="Ime i prezime"
+                                        id="imeprezime"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control p-2"
+                                        placeholder="Korisnicko ime"
+                                        id="korisnickoIme"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            placeholder="Lozinka"
+                                            id="lozinka"
+                                        />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <input
+                                                    type="checkbox"
+                                                    onclick="sakrij('lozinka')"
+                                                    class="form-check-input"
+                                                    id="showPassword2"
+                                                />
+                                                <label
+                                                    class="form-check-label p-2"
+                                                    for="showPassword2"
+                                                >
+                                                    Prikazi skriveno
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            placeholder="Potvrdi lozinku"
+                                            id="lozinkaPotvrda"
+                                        />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <input
+                                                    type="checkbox"
+                                                    onclick="sakrij('lozinkaPotvrda')"
+                                                    class="form-check-input"
+                                                    id="showPassword3"
+                                                />
+                                                <label
+                                                    class="form-check-label p-2"
+                                                    for="showPassword3"
+                                                >
+                                                    Prikazi skriveno
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button
+                                        type="button"
+                                        id="reg"
+                                        onclick="Registracija()"
+                                        class="btn btn-success btn-block p-3"
+                                    >
+                                        <h4>Registruj se</h4>
+                                    </button>
                                 </div>
                             </div>
                         </div>
