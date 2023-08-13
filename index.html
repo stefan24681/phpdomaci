@@ -107,16 +107,16 @@
                                 <div class="input-group">
                                     <input
                                         type="password"
-                                        name="pass"
+                                        name="password"
                                         class="form-control"
                                         placeholder="Lozinka..."
-                                        id="pass"
+                                        id="password"
                                     />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <input
                                                 type="checkbox"
-                                                onclick="sakrij('pass')"
+                                                onclick="sakrij('password')"
                                                 class="form-check-input"
                                                 id="showPassword1"
                                             />
@@ -248,5 +248,112 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"
         ></script>
+
+        <script type="text/javascript">
+            //brisanje u slucaju neispravnog unosa
+            $(document).ready(function () {
+                $("#prosledi").on("click", function () {
+                    $("#ime").val("");
+                    $("#korisnickoIme").val("");
+                    $("#lozinka").val("");
+                    $("#lozinkaPotvrda").val("");
+                });
+            });
+
+            //brisanje u slucaju neispravnog unosa
+            $(document).ready(function () {
+                $("#log").on("click", function () {
+                    $("#username").val("");
+                    $("#password").val("");
+                });
+            });
+
+            //logika logovanja na stranicu uz AJAX
+            function Login() {
+                var u = $("#username");
+                var p = $("#password");
+
+                if (isNotEmpty(u) & isNotEmpty(p)) {
+                    $.ajax({
+                        url: "auth.php",
+                        method: "POST",
+                        dataType: "text",
+                        data: {
+                            key: "login",
+                            username: u.val(),
+                            password: p.val(),
+                        },
+                        success: function (data) {
+                            if (data == "ERROR") {
+                                alert("Neuspesno ste se prijavili!");
+                            } else {
+                                alert("Uspesno");
+                            }
+                        },
+                    });
+                }
+            }
+
+            //logika registrovanja na stranicu uz AJAX
+            function Registracija() {
+                var name = $("#imeprezime");
+                var username = $("#korisnickoIme");
+                var password = $("#lozinka");
+                var check = $("#lozinkaPotvrda");
+
+                if (
+                    isNotEmpty(name) &
+                    isNotEmpty(username) &
+                    isNotEmpty(password) &
+                    isNotEmpty(check)
+                ) {
+                    if (password.val() == check.val()) {
+                        $.ajax({
+                            url: "auth.php",
+                            method: "POST",
+                            dataType: "text",
+                            data: {
+                                key: "reg",
+                                name: name.val(),
+                                username: username.val(),
+                                password: password.val(),
+                            },
+                            success: function (data) {
+                                if (data == "Podaci sačuvani u našoj bazi!") {
+                                    alert("Podaci sačuvani u našoj bazi!");
+                                    window.location = "index.html";
+                                } else {
+                                    alert(
+                                        "Registracija neuspesna! Podaci nisu sacuvani u bazi, pokusaj ponovo!" +
+                                            data
+                                    );
+                                }
+                            },
+                        });
+                    } else {
+                        alert("Lozinke nisu iste.");
+                        password.css("border", "1px solid red");
+                        check.css("border", "1px solid red");
+                    }
+                }
+            }
+
+            //logika sakrivanja password-a
+            function sakrij(nesto) {
+                var x = document.getElementById(nesto);
+                if (x.type === "password") {
+                    x.type = "text";
+                } else x.type = "password";
+            }
+
+            //logika vizuelnog obracanja u slucaju da je forma prazna!
+            function isNotEmpty(poziv) {
+                if (poziv.val() == "") {
+                    poziv.css("border", "1px solid red");
+                    return false;
+                } else poziv.css("border", "");
+                return true;
+            }
+        </script>
     </body>
 </html>
