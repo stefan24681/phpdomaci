@@ -76,7 +76,7 @@
                 
                 <div>
                 
-                    <div style="width: 200px; float: left;">
+                    <div class="m-1" style="width: 200px; float: left;">
                         <select class="form-control" id="izbor">
                             <option value="proizvod_id">ID</option>
                             <option value="naziv">Naziv</option>
@@ -87,16 +87,10 @@
                     </div>
 
                     <div style="float: left;">
-                        <input type="button" onclick="sortiraj()" class="btn btn-success" id="sortiraj" value="Sortiraj">
+                        <input type="button" onclick="sortiraj()" class="btn btn-success m-1" id="sortiraj" value="Sortiraj">
                     </div>
 
-                    <div style="float: right;">
-                        <input type="button" onclick="odjava()" value="Odjava" class="btn btn-danger">
-                    </div>
-
-                    <div style="float: right;"> 
-                        <input type="button" class="btn btn-success" id="dodajNovi" value="Dodaj novi proizvod">
-                    </div>
+                    
                 
                 </div>
 
@@ -111,7 +105,7 @@
                         <td width=150px>Godina proizvodnje proizvoda</td>
                         <td width=150px>Vrsta proizvoda</td>
                         <td width=150px>Cena proizvoda</td>
-                        <td width="150px">Akcije</td>
+                        <td width="250px">Akcije</td>
                     </tr>
                 </thead>
 
@@ -119,6 +113,14 @@
 
                 </tbody>
             </table>
+
+            <div style="float: right;">
+                <input type="button" onclick="odjava()" value="Odjava" class="btn btn-danger m-1">
+            </div>
+
+            <div style="float: right;"> 
+                <input type="button" class="btn btn-success m-1" id="dodajNovi" value="Dodaj novi proizvod">
+            </div>
 
         </div>
     </div>
@@ -172,7 +174,6 @@
         //Ucitavanje podataka u tabelu za prikaz
         function ucitajPodatke(start, limit) {
             var sort = $("#izbor").val();
-            console.log(sort);
             $.ajax({
                 url: 'main.php',
                 method: 'POST',
@@ -219,8 +220,8 @@
                             $("#izmeniProizvodID").val(broj_reda);
                             $("#proizvod_id").val(response.proizvod_id);
                             $("#naziv").val(response.naziv);
-                            $("#godina_proizvodnje").val(response.godina_proizvodnje);
                             $("#vrsta").val(response.vrsta);
+                            $("#godina_proizvodnje").val(response.godina_proizvodnje);
                             $("#cena").val(response.cena);
                             $("#manageBtn").attr('value','Sačuvaj izmene').attr('onclick', "glavna('izmeni')");
                             $("#closeBtn").fadeOut();

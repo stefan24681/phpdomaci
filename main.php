@@ -33,7 +33,7 @@ if (isset($_POST['key'])) {
         $start = $conn->real_escape_string($_POST['start']);
         $limit = $conn->real_escape_string($_POST['limit']);
         $sort = $conn->real_escape_string($_POST['sort']);
-        $sql = $conn->query("SELECT proizvod_id, naziv, vrsta, godina_proizvodnje, cena FROM prodaja ORDER BY $sort LIMIT $start, $limit");
+        $sql = $conn->query("SELECT proizvod_id, naziv, godina_proizvodnje, vrsta, cena FROM prodaja ORDER BY $sort LIMIT $start, $limit");
 
         if ($sql->num_rows > 0) {
             $response = "";
