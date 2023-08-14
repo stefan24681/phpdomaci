@@ -1,9 +1,13 @@
 <?php
 include('konekcija.php');
 
+session_start();
+
 if (isset($_POST['key'])) {
 
     if ($_POST['key'] == 'ubaci') {
+
+        $korisnik_id = $_SESSION['korisnik_id'];
 
         $proizvod_id = $_POST['proizvod_id'];
         $naziv = $_POST['naziv'];
@@ -17,7 +21,7 @@ if (isset($_POST['key'])) {
             echo "Isti proizvod " . $naziv . ", već postoji!";
         } else {
 
-            $sql = "INSERT INTO `prodaja` (`proizvod_id`,`naziv`, `vrsta`, `godina_proizvodnje`,`cena`,`korisnik_id`) VALUES ('$proizvod_id','$naziv', '$vrsta', '$godinaProizvodnje', '$cena', 1)";
+            $sql = "INSERT INTO `prodaja` (`proizvod_id`,`naziv`, `vrsta`, `godina_proizvodnje`,`cena`,`korisnik_id`) VALUES ('$proizvod_id','$naziv', '$vrsta', '$godinaProizvodnje', '$cena', '$korisnik_id')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Ubacen novi proizvod!";
@@ -30,10 +34,12 @@ if (isset($_POST['key'])) {
 
     if ($_POST['key'] == 'ucitaj') {
 
+        $korisnik_id = $_SESSION['korisnik_id'];
+
         $start = $conn->real_escape_string($_POST['start']);
         $limit = $conn->real_escape_string($_POST['limit']);
         $sort = $conn->real_escape_string($_POST['sort']);
-        $sql = $conn->query("SELECT proizvod_id, naziv, godina_proizvodnje, vrsta, cena FROM prodaja ORDER BY $sort LIMIT $start, $limit");
+        $sql = $conn->query("SELECT proizvod_id, naziv, godina_proizvodnje, vrsta, cena FROM prodaja WHERE korisnik_id = $korisnik_id ORDER BY $sort LIMIT $start, $limit");
 
         if ($sql->num_rows > 0) {
             $response = "";

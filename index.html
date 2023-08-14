@@ -257,7 +257,7 @@
 
                 if (isNotEmpty(u) & isNotEmpty(p)) {
                     $.ajax({
-                        url: "auth.php",
+                        url: "autentifikacija.php",
                         method: "POST",
                         dataType: "text",
                         data: {
@@ -291,7 +291,7 @@
                 ) {
                     if (password.val() == check.val()) {
                         $.ajax({
-                            url: "auth.php",
+                            url: "autentifikacija.php",
                             method: "POST",
                             dataType: "text",
                             data: {

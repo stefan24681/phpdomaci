@@ -12,6 +12,9 @@ if (isset($_POST['key'])) {
         if (mysqli_num_rows($query) == 0) {
             echo "ERROR";
         } else {
+            session_start();
+            $korisnik = mysqli_fetch_assoc($query);
+            $_SESSION['korisnik_id'] = $korisnik['korisnik_id'];
             echo "OK";
         }
     }
