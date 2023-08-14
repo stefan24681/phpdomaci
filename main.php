@@ -49,8 +49,8 @@ if (isset($_POST['key'])) {
                                 <tr>
                                     <td id="proizvod_' . $data["proizvod_id"] . '">' . $data["proizvod_id"] . '</td>
                                     <td>' . $data["naziv"] . '</td>
-                                    <td>' . $data["vrsta"] . '</td>
                                     <td>' . $data["godina_proizvodnje"] . '</td>
+                                    <td>' . $data["vrsta"] . '</td>
                                     <td>' . $data["cena"] . '</td>
                                     <td>
                                         <input type="button" onclick="izmeniPogledaj(' . $data["proizvod_id"] . ', \'izmeni\')" value="Izmeni" class="btn btn-primary">

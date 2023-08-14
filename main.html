@@ -153,7 +153,7 @@
                $(".modal-title").html("Unos novog proizvoda:");
                document.getElementById("proizvod_id").disabled = false;
                $("#manageBtn").attr('value', 'Dodaj').attr('onclick', "glavna('ubaci')").fadeIn();
-               $("div").css("color", "white");
+               $("div").css("color", "black");
             });    
           
             //osvezavanje prikaza nakon unosenja
@@ -306,6 +306,13 @@
             document.getElementById('godina_proizvodnje').value='';  
             document.getElementById('cena').value='';  
         }
+
+        function closeModal() {
+        $("#tableManager").modal('hide');
+    }
+
+    // Attach the click event handler to the "Izađi" button
+    $("#closeBtn").on('click', closeModal);
 
     </script>
     
