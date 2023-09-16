@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2023 at 11:07 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Sep 16, 2023 at 07:37 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,28 @@ INSERT INTO `prodaja` (`proizvod_id`, `naziv`, `godina_proizvodnje`, `vrsta`, `c
 (2, 'Fairy Deterdžent', '2022', 'Kucna hemija', 250, 1),
 (3, 'Kiselo mleko', '2023', 'Osnovne namernice', 60, 1),
 (4, 'Granule za pse', '2022', 'Hrana za pse', 850, 1),
-(5, 'Orbit bombone', '2023', 'Grickalice', 240, 1);
+(5, 'Orbit bombone', '2023', 'Grickalice', 240, 1),
+(6, 'Grisini Prima', '2023', 'Grickalice', 80, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `prodaja`
+--
+ALTER TABLE `prodaja`
+  ADD PRIMARY KEY (`proizvod_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `prodaja`
+--
+ALTER TABLE `prodaja`
+  MODIFY `proizvod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
