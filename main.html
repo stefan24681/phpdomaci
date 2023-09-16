@@ -42,7 +42,7 @@
                     <div class="modal-body">
                         
                         <div id="izmeni">
-                            <input type="text" class="form-control" placeholder="ID..." id="proizvod_id"><br>
+                            <input type="text" class="form-control" placeholder="ID se automatski unosi!" id="proizvod_id"><br>
                             <input type="text" class="form-control" placeholder="Naziv..." id="naziv"><br>
                             <input type="text" class="form-control" placeholder="Godina proizvodnje..." id="godina_proizvodnje"><br>
                             <input type="text" class="form-control" placeholder="Vrsta proizvoda..." id="vrsta"><br>
@@ -132,6 +132,7 @@
 
     <script type="text/javascript">
         
+        document.getElementById("proizvod_id").disabled = true;
         $(document).ready(function(){
 
             //Otvaranje modala za dodavanje novog proizvoda
@@ -151,7 +152,7 @@
 
                $("#closeBtn").fadeOut();
                $(".modal-title").html("Unos novog proizvoda:");
-               document.getElementById("proizvod_id").disabled = false;
+               
                $("#manageBtn").attr('value', 'Dodaj').attr('onclick', "glavna('ubaci')").fadeIn();
                $("div").css("color", "black");
             });    
